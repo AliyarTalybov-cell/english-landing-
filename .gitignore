@@ -27,3 +27,4 @@ dist-ssr
 # Only the edited clips in demos are published on the landing page.
 public/videos/*
 !public/videos/demos/
+.env*
