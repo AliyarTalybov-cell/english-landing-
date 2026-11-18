@@ -63,7 +63,7 @@ export const HeroCards = () => {
         </CardHeader>
 
         <CardContent>
-          <Button asChild className="w-full"><a href="https://english-platform-orcin.vercel.app/">Открыть маршрут</a></Button>
+          <Button asChild className="w-full"><a href="#about">Открыть маршрут</a></Button>
         </CardContent>
 
         <hr className="w-4/5 m-auto mb-4" />
