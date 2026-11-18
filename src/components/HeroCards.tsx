@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { AvatarPlaceholder } from "./AvatarPlaceholder";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,9 +9,8 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Check, Linkedin } from "lucide-react";
+import { Check } from "lucide-react";
 import { LightBulbIcon } from "./Icons";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export const HeroCards = () => {
   return (
@@ -19,126 +18,59 @@ export const HeroCards = () => {
       {/* Testimonial */}
       <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
-          <Avatar>
-            <AvatarImage
-              alt=""
-              src="https://github.com/shadcn.png"
-            />
-            <AvatarFallback>SH</AvatarFallback>
-          </Avatar>
+          <AvatarPlaceholder />
 
           <div className="flex flex-col">
-            <CardTitle className="text-lg">John Doe React</CardTitle>
-            <CardDescription>@john_doe</CardDescription>
+            <CardTitle className="text-lg">Ученик Roadmap A2</CardTitle>
+            <CardDescription>Unit 1 · People and places</CardDescription>
           </div>
         </CardHeader>
 
-        <CardContent>This landing page is awesome!</CardContent>
+        <CardContent>Каждый следующий шаг уже собран внутри урока.</CardContent>
       </Card>
 
       {/* Team */}
       <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="mt-8 flex justify-center items-center pb-2">
-          <img
-            src="https://i.pravatar.cc/150?img=58"
-            alt="user avatar"
-            className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-          />
-          <CardTitle className="text-center">Leo Miranda</CardTitle>
+          <AvatarPlaceholder large />
+          <CardTitle className="text-center">English Platform</CardTitle>
           <CardDescription className="font-normal text-primary">
-            Frontend Developer
+            Системный английский
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="text-center pb-2">
+        <CardContent className="text-center pb-16">
           <p>
-            I really enjoy transforming ideas into functional software that
-            exceeds expectations
+            Уроки, практика, аудирование и разговор в одном маршруте.
           </p>
         </CardContent>
 
-        <CardFooter>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa"
-              target="_blank"
-              className={buttonVariants({
-                variant: "ghost",
-                size: "sm",
-              })}
-            >
-              <span className="sr-only">Github icon</span>
-              <GitHubLogoIcon className="w-5 h-5" />
-            </a>
-            <a
-              rel="noreferrer noopener"
-              href="https://twitter.com/leo_mirand4"
-              target="_blank"
-              className={buttonVariants({
-                variant: "ghost",
-                size: "sm",
-              })}
-            >
-              <span className="sr-only">X icon</span>
-              <svg
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                className="fill-foreground w-5 h-5"
-              >
-                <title>X</title>
-                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-              </svg>
-            </a>
-
-            <a
-              rel="noreferrer noopener"
-              href="https://www.linkedin.com/in/leopoldo-miranda/"
-              target="_blank"
-              className={buttonVariants({
-                variant: "ghost",
-                size: "sm",
-              })}
-            >
-              <span className="sr-only">Linkedin icon</span>
-              <Linkedin size="20" />
-            </a>
-          </div>
-        </CardFooter>
       </Card>
 
       {/* Pricing */}
       <Card className="absolute top-[150px] left-[50px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader>
           <CardTitle className="flex item-center justify-between">
-            Free
-            <Badge
-              variant="secondary"
-              className="text-sm text-primary"
-            >
-              Most popular
-            </Badge>
+            Roadmap A2
           </CardTitle>
           <div>
-            <span className="text-3xl font-bold">$0</span>
-            <span className="text-muted-foreground"> /month</span>
+            <span className="text-3xl font-bold">A1 → A2</span>
           </div>
 
           <CardDescription>
-            Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.
+            Последовательные юниты и практика после каждой темы.
           </CardDescription>
         </CardHeader>
 
         <CardContent>
-          <Button className="w-full">Start Free Trial</Button>
+          <Button asChild className="w-full"><a href="https://english-platform-orcin.vercel.app/">Открыть маршрут</a></Button>
         </CardContent>
 
         <hr className="w-4/5 m-auto mb-4" />
 
         <CardFooter className="flex">
           <div className="space-y-4">
-            {["4 Team member", "4 GB Storage", "Upto 6 pages"].map(
+            {["10 последовательных юнитов", "Практика и аудирование", "AI-помощник"].map(
               (benefit: string) => (
                 <span
                   key={benefit}
@@ -160,10 +92,9 @@ export const HeroCards = () => {
             <LightBulbIcon />
           </div>
           <div>
-            <CardTitle>Light & dark mode</CardTitle>
+            <CardTitle>Уроки и редактор</CardTitle>
             <CardDescription className="text-md mt-2">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Consectetur
-              natusm.
+              Материалы для ученика и преподавателя рядом.
             </CardDescription>
           </div>
         </CardHeader>

@@ -10,27 +10,23 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     icon: <MedalIcon />,
-    title: "Accessibility",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    title: "Выберите тему",
+    description: "Откройте урок по нужной теме Roadmap A2.",
   },
   {
     icon: <MapIcon />,
-    title: "Community",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    title: "Послушайте",
+    description: "Прослушайте фразы и сохраните новые слова в закладки.",
   },
   {
     icon: <PlaneIcon />,
-    title: "Scalability",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    title: "Закрепите",
+    description: "Проверьте себя в тесте по сохранённым словам.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    title: "Используйте",
+    description: "Запишите фразу своим голосом или начните диалог с ИИ.",
   },
 ];
 
@@ -41,15 +37,14 @@ export const HowItWorks = () => {
       className="container text-center py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold ">
-        How It{" "}
+        Как проходит{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Works{" "}
+          урок{" "}
         </span>
-        Step-by-Step Guide
+        от темы до результата
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        От задания в учебнике до разговора, в котором пригодятся новые слова.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

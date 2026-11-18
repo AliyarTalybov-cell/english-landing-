@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { useDemoVideo } from "./DemoVideo";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
@@ -24,25 +24,14 @@ interface RouteProps {
 }
 
 const routeList: RouteProps[] = [
-  {
-    href: "#features",
-    label: "Features",
-  },
-  {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
+  { href: "#features", label: "Возможности" },
+  { href: "#howItWorks", label: "Как проходит урок" },
+  { href: "#testimonials", label: "Отзывы" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export const Navbar = () => {
+  const openDemo = useDemoVideo();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
@@ -50,12 +39,12 @@ export const Navbar = () => {
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
             <a
-              rel="noreferrer noopener"
-              href="/"
+              href="#top"
+              aria-label="English — на главный экран"
               className="ml-2 font-bold text-xl flex"
             >
               <LogoIcon />
-              ShadcnUI/React
+              English.
             </a>
           </NavigationMenuItem>
 
@@ -67,7 +56,7 @@ export const Navbar = () => {
               open={isOpen}
               onOpenChange={setIsOpen}
             >
-              <SheetTrigger className="px-2">
+              <SheetTrigger aria-label="Меню" className="px-2">
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
@@ -79,11 +68,13 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    English.
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
+                  {routeList.map(({ href, label }: RouteProps) => href === "#features" ? (
+                    <button type="button" key={href} aria-haspopup="dialog" className={buttonVariants({ variant: "ghost" })} onClick={() => { setIsOpen(false); openDemo(); }}>{label}</button>
+                  ) : (
                     <a
                       rel="noreferrer noopener"
                       key={label}
@@ -96,14 +87,14 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="https://english-platform-orcin.vercel.app/"
                     target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
+                    className={`border ${buttonVariants({
                       variant: "secondary",
                     })}`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    <LogoIcon small />
+                    Открыть English
                   </a>
                 </nav>
               </SheetContent>
@@ -112,7 +103,9 @@ export const Navbar = () => {
 
           {/* desktop */}
           <nav className="hidden md:flex gap-2">
-            {routeList.map((route: RouteProps, i) => (
+            {routeList.map((route: RouteProps, i) => route.href === "#features" ? (
+              <button type="button" key={route.href} aria-haspopup="dialog" className={`text-[17px] ${buttonVariants({ variant: "ghost" })}`} onClick={() => openDemo()}>{route.label}</button>
+            ) : (
               <a
                 rel="noreferrer noopener"
                 href={route.href}
@@ -129,12 +122,12 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+              href="https://english-platform-orcin.vercel.app/"
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              <LogoIcon small />
+              Открыть English
             </a>
 
             <ModeToggle />

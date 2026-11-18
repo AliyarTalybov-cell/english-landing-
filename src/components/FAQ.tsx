@@ -1,3 +1,4 @@
+import { LogoIcon } from "./Icons";
 import {
   Accordion,
   AccordionContent,
@@ -13,34 +14,54 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
+    question: "С какого уровня можно начинать?",
+    answer: "Основной маршрут рассчитан на переход от уверенного A1 к A2.",
     value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+    question: "Чем отличаются два маршрута в учебнике Roadmap A2?",
+    answer: "Базовый маршрут книги рассчитан на 70–90 часов. В центре каждого урока — разговорная задача и нужные для неё слова и грамматика. Расширенный маршрут занимает около 120 часов и включает дополнительные уроки чтения, аудирования и письма.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+    question: "Как заниматься с ИИ-помощником?",
+    answer: "Выберите тему, попросите ИИ составить список слов для изучения и потренируйтесь использовать их в диалоге.",
     value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "Как повторять слова из аудирования?",
+    answer: "Добавьте незнакомые слова в закладки и пройдите по ним тест. Чтобы потренировать произношение, прослушайте фразу и запишите свой вариант.",
     value: "item-4",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+    question: "Можно ли написать преподавателю лично?",
+    answer: "Да. Откройте «Сообщения» и нажмите «Написать учителю». Можно прислать вопрос текстом, приложить фото тетради или записать голосовое сообщение, чтобы преподаватель услышал ваше произношение.",
     value: "item-5",
+  },
+  {
+    question: "Можно ли создать свой урок?",
+    answer: "Да. В редакторе преподавателя нажмите «Новый урок», введите название и добавьте первую тему. К объяснению можно приложить упражнения: например, выбрать ответ, собрать фразу или найти ошибку. Черновик сохраняется автоматически. Проверьте его в предпросмотре, выберите учеников и нажмите «Опубликовать».",
+    value: "create-lesson",
+  },
+  {
+    question: "Как выдать одно задание всей группе?",
+    answer: "Преподаватель может назначить группе общее задание и слова для изучения. Для вопросов по ходу работы откройте «Сообщения» и создайте групповой чат. Там ученики смогут обсудить задание друг с другом и с вами.",
+    value: "group-work",
+  },
+  {
+    question: "Можно ли пройти тему ещё раз?",
+    answer: "Да. В нужной теме нажмите «Начать заново», затем подтвердите «Стереть ответы темы?». Сбросятся ответы только в этой теме. Чтобы повторить тест по словам, откройте его в списке словарных тестов и выберите «Пройти ещё раз».",
+    value: "retry-topic",
+  },
+  {
+    question: "Как понять, что повторить с конкретным учеником?",
+    answer: "В разделе «Ученики» откройте карточку ученика. Там видно, когда он занимался и в каких темах чаще ошибался или подсматривал ответы. Выберите одну такую тему и разберите её на общей доске.",
+    value: "student-progress",
+  },
+  {
+    question: "Кто увидит изменения в уже опубликованном уроке?",
+    answer: "Пока вы редактируете черновик, ученики работают с опубликованной версией. Чтобы показать им изменения, нажмите «Опубликовать правки». Если удалить задание, его сохранённый ответ тоже удалится.",
+    value: "edit-published",
   },
 ];
 
@@ -51,9 +72,9 @@ export const FAQ = () => {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Frequently Asked{" "}
+        Частые{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
+          вопросы
         </span>
       </h2>
 
@@ -77,13 +98,13 @@ export const FAQ = () => {
       </Accordion>
 
       <h3 className="font-medium mt-4">
-        Still have questions?{" "}
+        Остались вопросы?{" "}
         <a
           rel="noreferrer noopener"
-          href="#"
+          href="https://english-platform-orcin.vercel.app/"
           className="text-primary transition-all border-primary hover:border-b-2"
         >
-          Contact us
+          <LogoIcon small />Открыть English
         </a>
       </h3>
     </section>

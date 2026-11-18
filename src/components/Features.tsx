@@ -1,3 +1,5 @@
+import { DemoPreview } from "./DemoVideo";
+import type { Clip } from "./demoClips";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -6,47 +8,40 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import image from "../assets/growth.png";
-import image3 from "../assets/reflecting.png";
-import image4 from "../assets/looking-ahead.png";
-
 interface FeatureProps {
   title: string;
   description: string;
-  image: string;
+  clip: Clip;
 }
 
 const features: FeatureProps[] = [
   {
-    title: "Responsive Design",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image4,
+    title: "Аудирование",
+    description: "Слушайте фразы, сохраняйте незнакомые слова и записывайте свой голос, повторяя услышанное.",
+    clip: "listening",
   },
   {
-    title: "Intuitive user interface",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image3,
+    title: "Личный словарь",
+    description: "Добавляйте слова в закладки, а затем проходите тесты по своему списку.",
+    clip: "vocabulary",
   },
   {
-    title: "AI-Powered insights",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image,
+    title: "Диалог с ИИ",
+    description: "Выберите тему для разговора с ИИ. Попросите его подобрать слова и используйте их в диалоге.",
+    clip: "assistant",
   },
 ];
 
 const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "Roadmap A2",
+  "Практика",
+  "Аудирование",
+  "Запись голоса",
+  "Диалог с ИИ",
+  "Тесты по словам",
+  "Общая доска",
+  "Чат",
+  "Прогресс",
 ];
 
 export const Features = () => {
@@ -56,9 +51,9 @@ export const Features = () => {
       className="container py-24 sm:py-32 space-y-8"
     >
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Many{" "}
+        Возможности{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Great Features
+          English Platform
         </span>
       </h2>
 
@@ -76,20 +71,16 @@ export const Features = () => {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map(({ title, description, image }: FeatureProps) => (
-          <Card key={title}>
+        {features.map(({ title, description, clip }: FeatureProps) => (
+          <Card key={title} className="flex flex-col">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>
 
             <CardContent>{description}</CardContent>
 
-            <CardFooter>
-              <img
-                src={image}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
+            <CardFooter className="mt-auto">
+              <DemoPreview clip={clip} className="mx-auto w-[200px] lg:w-[300px]" />
             </CardFooter>
           </Card>
         ))}

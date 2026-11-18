@@ -1,3 +1,4 @@
+import { DemoVideoProvider } from "./components/DemoVideo";
 import { About } from "./components/About";
 import { Cta } from "./components/Cta";
 import { FAQ } from "./components/FAQ";
@@ -17,7 +18,7 @@ import "./App.css";
 
 function App() {
   return (
-    <>
+    <DemoVideoProvider>
       <Navbar />
       <Hero />
       <Sponsors />
@@ -33,7 +34,7 @@ function App() {
       <FAQ />
       <Footer />
       <ScrollToTop />
-    </>
+    </DemoVideoProvider>
   );
 }
 

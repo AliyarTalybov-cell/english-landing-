@@ -1,3 +1,4 @@
+import { AvatarPlaceholder } from "./AvatarPlaceholder";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -7,10 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 interface TeamProps {
-  imageUrl: string;
+
   name: string;
   position: string;
   socialNetworks: SociaNetworkslProps[];
@@ -23,71 +24,40 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
-    name: "Emma Smith",
-    position: "Product Manager",
+
+    name: "Методист",
+    position: "Уроки и практика",
     socialNetworks: [
       {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
         name: "Facebook",
-        url: "https://www.facebook.com/",
+        url: "https://english-platform-orcin.vercel.app/",
       },
       {
         name: "Instagram",
-        url: "https://www.instagram.com/",
+        url: "https://english-platform-orcin.vercel.app/",
       },
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
-    name: "John Doe",
-    position: "Tech Lead",
+
+    name: "AI-помощник",
+    position: "Подсказки внутри урока",
     socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
-    name: "Ashley Ross",
-    position: "Frontend Developer",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
 
       {
         name: "Instagram",
-        url: "https://www.instagram.com/",
+        url: "https://english-platform-orcin.vercel.app/",
       },
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=17",
-    name: "Bruce Rogers",
-    position: "Backend Developer",
+
+    name: "English Platform",
+    position: "Для учеников и преподавателей",
     socialNetworks: [
       {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
         name: "Facebook",
-        url: "https://www.facebook.com/",
+        url: "https://english-platform-orcin.vercel.app/",
       },
     ],
   },
@@ -96,9 +66,6 @@ const teamList: TeamProps[] = [
 export const Team = () => {
   const socialIcon = (iconName: string) => {
     switch (iconName) {
-      case "Linkedin":
-        return <Linkedin size="20" />;
-
       case "Facebook":
         return <Facebook size="20" />;
 
@@ -114,29 +81,40 @@ export const Team = () => {
     >
       <h2 className="text-3xl md:text-4xl font-bold">
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Our Dedicated{" "}
+          Команда English{" "}
         </span>
-        Crew
+        Platform
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Материалы и инструменты для понятного движения по курсу.
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
+        <Card id="author" className="bg-muted/50 relative mt-8 flex flex-col items-center text-center scroll-mt-32">
+          <CardHeader className="mt-8 items-center pb-2">
+            <img src="/aliyar.jpg" alt="Алияр Талыбов" width="96" height="96"
+              className="absolute -top-12 h-24 w-24 rounded-full object-cover" loading="lazy" />
+            <CardTitle>Алияр Талыбов</CardTitle>
+            <CardDescription className="text-primary">Автор English Platform</CardDescription>
+          </CardHeader>
+          <CardContent className="pb-2">
+            <p>Перенёс уроки Roadmap A2 в онлайн и добавил практику для учеников и преподавателей.</p>
+          </CardContent>
+          <CardFooter className="mt-auto flex flex-col gap-1 pt-2 text-sm">
+            <h4 className="font-medium">Связь с автором</h4>
+            <a className="break-all text-primary hover:underline" href="mailto:aliyartalybov@icloud.com">aliyartalybov@icloud.com</a>
+            <a className="text-primary hover:underline" href="https://t.me/aliyarMSK">Telegram · @aliyarMSK</a>
+          </CardFooter>
+        </Card>
         {teamList.map(
-          ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          ({ name, position, socialNetworks }: TeamProps) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
             >
               <CardHeader className="mt-8 flex justify-center items-center pb-2">
-                <img
-                  src={imageUrl}
-                  alt={`${name} ${position}`}
-                  className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-                />
+                <AvatarPlaceholder large />
                 <CardTitle className="text-center">{name}</CardTitle>
                 <CardDescription className="text-primary">
                   {position}
@@ -144,7 +122,7 @@ export const Team = () => {
               </CardHeader>
 
               <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>Помогаем двигаться от темы к практике без лишних сервисов.</p>
               </CardContent>
 
               <CardFooter>

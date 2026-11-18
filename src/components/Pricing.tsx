@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { LogoIcon } from "./Icons";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,48 +26,45 @@ interface PricingProps {
 
 const pricingList: PricingProps[] = [
   {
-    title: "Free",
+    title: "Старт",
     popular: 0,
     price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get Started",
+    description: "Первые шаги по Roadmap A2.",
+    buttonText: "Открыть English",
     benefitList: [
-      "1 Team member",
-      "2 GB Storage",
-      "Upto 4 pages",
-      "Community support",
-      "lorem ipsum dolor",
+      "Юниты Roadmap A2",
+      "Практика после темы",
+      "Аудирование",
+      "AI-помощник",
+      "Повторение ошибок",
     ],
   },
   {
-    title: "Premium",
+    title: "Roadmap A2",
     popular: 1,
     price: 5,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
+    description: "Последовательный маршрут от A1 к A2.",
+    buttonText: "Начать учиться",
     benefitList: [
-      "4 Team member",
-      "4 GB Storage",
-      "Upto 6 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "10 последовательных юнитов",
+      "Практика и разговор",
+      "Грамматика и слова",
+      "AI внутри урока",
+      "Прогресс ученика",
     ],
   },
   {
-    title: "Enterprise",
+    title: "Для преподавателя",
     popular: 0,
     price: 40,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
+    description: "Материалы, доски и сообщения в одном месте.",
+    buttonText: "Открыть сервис",
     benefitList: [
-      "10 Team member",
-      "8 GB Storage",
-      "Upto 10 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "Редактор уроков",
+      "Доски",
+      "Сообщения",
+      "Прогресс",
+      "Связь с учеником",
     ],
   },
 ];
@@ -79,16 +76,15 @@ export const Pricing = () => {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Get
+        English Platform{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           {" "}
-          Unlimited{" "}
+          Roadmap A2{" "}
         </span>
-        Access
+        и практика
       </h2>
       <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        reiciendis.
+        Выберите сценарий, с которого начнёте работу с платформой.
       </h3>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pricingList.map((pricing: PricingProps) => (
@@ -103,25 +99,16 @@ export const Pricing = () => {
             <CardHeader>
               <CardTitle className="flex item-center justify-between">
                 {pricing.title}
-                {pricing.popular === PopularPlanType.YES ? (
-                  <Badge
-                    variant="secondary"
-                    className="text-sm text-primary"
-                  >
-                    Most popular
-                  </Badge>
-                ) : null}
               </CardTitle>
               <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+                <span className="text-3xl font-bold">{pricing.price === 0 ? "Старт" : pricing.price === 5 ? "A1 → A2" : "Для школы"}</span>
               </div>
 
               <CardDescription>{pricing.description}</CardDescription>
             </CardHeader>
 
             <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
+              <Button asChild className="w-full"><a href="https://english-platform-orcin.vercel.app/">{pricing.buttonText === "Открыть English" && <LogoIcon small />}{pricing.buttonText}</a></Button>
             </CardContent>
 
             <hr className="w-4/5 m-auto mb-4" />
