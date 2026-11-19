@@ -1,5 +1,4 @@
 import { AvatarPlaceholder } from "./AvatarPlaceholder";
-import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,72 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Facebook, Instagram } from "lucide-react";
-
-interface TeamProps {
-
-  name: string;
-  position: string;
-  socialNetworks: SociaNetworkslProps[];
-}
-
-interface SociaNetworkslProps {
-  name: string;
-  url: string;
-}
-
-const teamList: TeamProps[] = [
-  {
-
-    name: "Методист",
-    position: "Уроки и практика",
-    socialNetworks: [
-      {
-        name: "Facebook",
-        url: "https://english-platform-orcin.vercel.app/",
-      },
-      {
-        name: "Instagram",
-        url: "https://english-platform-orcin.vercel.app/",
-      },
-    ],
-  },
-  {
-
-    name: "AI-помощник",
-    position: "Подсказки внутри урока",
-    socialNetworks: [
-
-      {
-        name: "Instagram",
-        url: "https://english-platform-orcin.vercel.app/",
-      },
-    ],
-  },
-  {
-
-    name: "English Platform",
-    position: "Для учеников и преподавателей",
-    socialNetworks: [
-      {
-        name: "Facebook",
-        url: "https://english-platform-orcin.vercel.app/",
-      },
-    ],
-  },
+const teamList = [
+  { name: "Методист", position: "Уроки и практика" },
+  { name: "AI-помощник", position: "Подсказки внутри урока" },
+  { name: "Платформа", position: "Для учеников и преподавателей" },
 ];
 
 export const Team = () => {
-  const socialIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Facebook":
-        return <Facebook size="20" />;
-
-      case "Instagram":
-        return <Instagram size="20" />;
-    }
-  };
-
   return (
     <section
       id="team"
@@ -108,7 +48,7 @@ export const Team = () => {
           </CardFooter>
         </Card>
         {teamList.map(
-          ({ name, position, socialNetworks }: TeamProps) => (
+          ({ name, position }) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
@@ -125,24 +65,6 @@ export const Team = () => {
                 <p>Помогаем двигаться от темы к практике без лишних сервисов.</p>
               </CardContent>
 
-              <CardFooter>
-                {socialNetworks.map(({ name, url }: SociaNetworkslProps) => (
-                  <div key={name}>
-                    <a
-                      rel="noreferrer noopener"
-                      href={url}
-                      target="_blank"
-                      className={buttonVariants({
-                        variant: "ghost",
-                        size: "sm",
-                      })}
-                    >
-                      <span className="sr-only">{name} icon</span>
-                      {socialIcon(name)}
-                    </a>
-                  </div>
-                ))}
-              </CardFooter>
             </Card>
           )
         )}

@@ -44,12 +44,13 @@ export const Navbar = () => {
               className="ml-2 font-bold text-xl flex"
             >
               <LogoIcon />
-              English.
+              English
             </a>
           </NavigationMenuItem>
 
           {/* mobile */}
-          <span className="flex md:hidden">
+          <span className="flex items-center gap-1 md:hidden">
+            <a href="https://english-platform-orcin.vercel.app/" className={buttonVariants({ variant: "secondary", size: "sm" })}>English Platform</a>
             <ModeToggle />
 
             <Sheet
@@ -68,7 +69,7 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    English.
+                    Меню
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
@@ -85,17 +86,7 @@ export const Navbar = () => {
                       {label}
                     </a>
                   ))}
-                  <a
-                    rel="noreferrer noopener"
-                    href="https://english-platform-orcin.vercel.app/"
-                    target="_blank"
-                    className={`border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    <LogoIcon small />
-                    Открыть English
-                  </a>
+
                 </nav>
               </SheetContent>
             </Sheet>
@@ -127,7 +118,7 @@ export const Navbar = () => {
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
               <LogoIcon small />
-              Открыть English
+              English Platform
             </a>
 
             <ModeToggle />

@@ -1,134 +1,98 @@
-import { LogoIcon } from "./Icons";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { useId, useState, type FormEvent } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Check, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Input } from "./ui/input";
 
-enum PopularPlanType {
-  NO = 0,
-  YES = 1,
-}
-
-interface PricingProps {
-  title: string;
-  popular: PopularPlanType;
-  price: number;
-  description: string;
-  buttonText: string;
-  benefitList: string[];
-}
-
-const pricingList: PricingProps[] = [
+const options = [
   {
-    title: "Старт",
-    popular: 0,
-    price: 0,
-    description: "Первые шаги по Roadmap A2.",
-    buttonText: "Открыть English",
-    benefitList: [
-      "Юниты Roadmap A2",
-      "Практика после темы",
-      "Аудирование",
-      "AI-помощник",
-      "Повторение ошибок",
-    ],
+    title: "Самостоятельно",
+    description: "Учитесь в своём темпе и выбирайте, что повторить.",
+    role: "Ученик",
+    features: ["Уроки и тесты по Roadmap A2", "Тренировка слов из закладок", "Диалоги с ИИ"],
   },
   {
-    title: "Roadmap A2",
-    popular: 1,
-    price: 5,
-    description: "Последовательный маршрут от A1 к A2.",
-    buttonText: "Начать учиться",
-    benefitList: [
-      "10 последовательных юнитов",
-      "Практика и разговор",
-      "Грамматика и слова",
-      "AI внутри урока",
-      "Прогресс ученика",
-    ],
+    title: "С преподавателем",
+    description: "Выполняйте задания учителя и обсуждайте их вместе.",
+    role: "Ученик",
+    features: ["Задания для вашей группы", "Переписка с преподавателем", "Совместная работа на доске"],
   },
   {
-    title: "Для преподавателя",
-    popular: 0,
-    price: 40,
-    description: "Материалы, доски и сообщения в одном месте.",
-    buttonText: "Открыть сервис",
-    benefitList: [
-      "Редактор уроков",
-      "Доски",
-      "Сообщения",
-      "Прогресс",
-      "Связь с учеником",
-    ],
+    title: "Кабинет преподавателя",
+    description: "Готовьте уроки для своих учеников и следите за их результатами.",
+    role: "Учитель",
+    features: ["Редактор и публикация уроков", "Материалы и чаты для групп", "Прогресс каждого ученика"],
   },
 ];
 
-export const Pricing = () => {
+function AccessForm({ title, role }: { title: string; role: string }) {
+  const id = useId();
+  const [checked, setChecked] = useState(false);
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setChecked(true);
+  }
+
   return (
-    <section
-      id="pricing"
-      className="container py-24 sm:py-32"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold text-center">
-        English Platform{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          Roadmap A2{" "}
-        </span>
-        и практика
-      </h2>
-      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Выберите сценарий, с которого начнёте работу с платформой.
-      </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingList.map((pricing: PricingProps) => (
-          <Card
-            key={pricing.title}
-            className={
-              pricing.popular === PopularPlanType.YES
-                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
-                : ""
-            }
-          >
-            <CardHeader>
-              <CardTitle className="flex item-center justify-between">
-                {pricing.title}
-              </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">{pricing.price === 0 ? "Старт" : pricing.price === 5 ? "A1 → A2" : "Для школы"}</span>
-              </div>
+    <>
+      <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60" />
+      <Dialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[92dvh] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 overflow-auto rounded-lg border bg-background p-6 shadow-lg">
+        <Dialog.Title className="pr-8 text-xl font-semibold">Заявка на доступ</Dialog.Title>
+        <Dialog.Description className="mb-5 mt-1 text-sm text-muted-foreground">{title}</Dialog.Description>
+        <Dialog.Close asChild>
+          <Button variant="ghost" size="icon" className="absolute right-2 top-2" aria-label="Закрыть форму"><X size={18} /></Button>
+        </Dialog.Close>
+        <form className="grid gap-3" onSubmit={submit} onChange={() => setChecked(false)}>
+          <div><label htmlFor={id + "-name"}>Имя</label><Input id={id + "-name"} name="name" autoComplete="name" pattern=".*\S.*" required /></div>
+          <div><label htmlFor={id + "-email"}>Почта</label><Input id={id + "-email"} name="email" type="email" autoComplete="email" required /></div>
+          <div><label htmlFor={id + "-phone"}>Телефон</label><Input id={id + "-phone"} name="phone" type="tel" autoComplete="tel" required
+            pattern={'(?=(?:\\D*\\d){7,15}\\D*$)[+0-9\\s\\(\\)\\-]+'} title="Введите от 7 до 15 цифр. Можно использовать плюс, пробелы, скобки и дефисы." /></div>
+          <fieldset>
+            <legend>Ваша роль</legend>
+            <div className="mt-1 flex gap-5">
+              {["Ученик", "Учитель"].map((item) => (
+                <label key={item} className="flex items-center gap-2"><input type="radio" name="role" value={item} defaultChecked={role === item} required />{item}</label>
+              ))}
+            </div>
+          </fieldset>
+          <Button type="submit">Проверить заявку</Button>
+          <p role="status" className="text-sm text-muted-foreground">
+            {checked ? "Данные заполнены верно. Это демонстрационная форма." : "Демонстрационная форма. Отправка заявки пока отключена."}
+          </p>
+        </form>
+      </Dialog.Content>
+    </>
+  );
+}
 
-              <CardDescription>{pricing.description}</CardDescription>
-            </CardHeader>
-
-            <CardContent>
-              <Button asChild className="w-full"><a href="https://english-platform-orcin.vercel.app/">{pricing.buttonText === "Открыть English" && <LogoIcon small />}{pricing.buttonText}</a></Button>
+export const Pricing = () => (
+  <section id="pricing" className="container py-24 sm:py-32">
+    <h2 className="text-center text-3xl font-bold md:text-4xl">
+      Варианты <span className="bg-gradient-to-b from-primary/60 to-primary bg-clip-text text-transparent">подключения</span>
+    </h2>
+    <p className="pb-8 pt-4 text-center text-xl text-muted-foreground">Выберите, как вы будете заниматься или преподавать.</p>
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {options.map((option) => (
+        <Dialog.Root key={option.title}>
+          <Card className="relative flex flex-col">
+            <CardHeader><CardTitle>{option.title}</CardTitle><CardDescription>{option.description}</CardDescription></CardHeader>
+            <CardContent className="mt-auto">
+              <Dialog.Trigger asChild>
+                <Button className="w-full after:absolute after:inset-0 after:rounded-lg">Получить доступ</Button>
+              </Dialog.Trigger>
             </CardContent>
-
-            <hr className="w-4/5 m-auto mb-4" />
-
-            <CardFooter className="flex">
-              <div className="space-y-4">
-                {pricing.benefitList.map((benefit: string) => (
-                  <span
-                    key={benefit}
-                    className="flex"
-                  >
-                    <Check className="text-green-500" />{" "}
-                    <h3 className="ml-2">{benefit}</h3>
-                  </span>
-                ))}
-              </div>
+            <hr className="mx-auto mb-4 w-4/5" />
+            <CardFooter>
+              <ul className="space-y-3">{option.features.map((feature) => (
+                <li key={feature} className="flex gap-2"><Check aria-hidden="true" className="shrink-0 text-green-500" />{feature}</li>
+              ))}</ul>
             </CardFooter>
           </Card>
-        ))}
-      </div>
-    </section>
-  );
-};
+          <Dialog.Portal><AccessForm title={option.title} role={option.role} /></Dialog.Portal>
+        </Dialog.Root>
+      ))}
+    </div>
+  </section>
+);

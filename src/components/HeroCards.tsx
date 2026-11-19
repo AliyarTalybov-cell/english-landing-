@@ -7,9 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card";
-import { Check } from "lucide-react";
 import { LightBulbIcon } from "./Icons";
 
 export const HeroCards = () => {
@@ -33,56 +31,29 @@ export const HeroCards = () => {
       <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="mt-8 flex justify-center items-center pb-2">
           <AvatarPlaceholder large />
-          <CardTitle className="text-center">English Platform</CardTitle>
+          <CardTitle className="text-center">Разговорная практика</CardTitle>
           <CardDescription className="font-normal text-primary">
-            Системный английский
+            Работа в паре
           </CardDescription>
         </CardHeader>
 
         <CardContent className="text-center pb-16">
           <p>
-            Уроки, практика, аудирование и разговор в одном маршруте.
+            Обсудите тему с преподавателем и запишите фразы, которые пригодятся в следующем разговоре.
           </p>
         </CardContent>
 
       </Card>
 
-      {/* Pricing */}
-      <Card className="absolute top-[150px] left-[50px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
-        <CardHeader>
-          <CardTitle className="flex item-center justify-between">
-            Roadmap A2
-          </CardTitle>
-          <div>
-            <span className="text-3xl font-bold">A1 → A2</span>
-          </div>
-
-          <CardDescription>
-            Последовательные юниты и практика после каждой темы.
-          </CardDescription>
+      <Card className="absolute top-[150px] left-[50px] w-60 drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+        <CardHeader className="p-4 pb-3">
+          <CardDescription>Roadmap A2 · Unit 4</CardDescription>
+          <CardTitle className="text-xl">A nice area</CardTitle>
+          <p className="text-sm text-muted-foreground">Как описать свой район и рассказать, что есть рядом с домом?</p>
         </CardHeader>
-
-        <CardContent>
-          <Button asChild className="w-full"><a href="#about">Открыть маршрут</a></Button>
+        <CardContent className="p-4 pt-0">
+          <Button asChild size="sm"><a href="#about">Открыть маршрут</a></Button>
         </CardContent>
-
-        <hr className="w-4/5 m-auto mb-4" />
-
-        <CardFooter className="flex">
-          <div className="space-y-4">
-            {["10 последовательных юнитов", "Практика и аудирование", "AI-помощник"].map(
-              (benefit: string) => (
-                <span
-                  key={benefit}
-                  className="flex"
-                >
-                  <Check className="text-green-500" />{" "}
-                  <h3 className="ml-2">{benefit}</h3>
-                </span>
-              )
-            )}
-          </div>
-        </CardFooter>
       </Card>
 
       {/* Service */}

@@ -1,5 +1,4 @@
 import { useDemoVideo } from "./DemoVideo";
-import { LogoIcon } from "./Icons";
 import { Button } from "./ui/button";
 
 export const Cta = () => {
@@ -20,12 +19,12 @@ export const Cta = () => {
             завтра
           </h2>
           <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
-            Откройте English, выберите тему и начните с одного небольшого урока.
+            Выберите тему и начните с одного небольшого урока.
           </p>
         </div>
 
         <div className="space-y-4 lg:col-start-2">
-          <Button asChild className="w-full md:mr-4 md:w-auto"><a href="https://english-platform-orcin.vercel.app/"><LogoIcon small />Открыть English</a></Button>
+          <Button asChild className="w-full md:mr-4 md:w-auto"><a href="#pricing">Выбрать доступ</a></Button>
           <Button
             aria-haspopup="dialog"
             onClick={() => openDemo()}

@@ -1,4 +1,3 @@
-import { LogoIcon } from "./Icons";
 import {
   Accordion,
   AccordionContent,
@@ -97,16 +96,6 @@ export const FAQ = () => {
         ))}
       </Accordion>
 
-      <h3 className="font-medium mt-4">
-        Остались вопросы?{" "}
-        <a
-          rel="noreferrer noopener"
-          href="https://english-platform-orcin.vercel.app/"
-          className="text-primary transition-all border-primary hover:border-b-2"
-        >
-          <LogoIcon small />Открыть English
-        </a>
-      </h3>
     </section>
   );
 };

@@ -11,9 +11,9 @@ export const Hero = () => {
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
             <span className="inline bg-gradient-to-r from-[#F596D3]  to-[#D247BF] text-transparent bg-clip-text">
-              English.
+              Английский,
             </span>{" "}
-            английский, который становится привычкой
+            который становится привычкой
           </h1>{" "}
           <h2 className="inline">
             <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
@@ -28,7 +28,7 @@ export const Hero = () => {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button asChild className="w-full md:w-1/3"><a href="https://english-platform-orcin.vercel.app/">Начать учиться</a></Button>
+          <Button asChild className="w-full md:w-1/3"><a href="#pricing">Получить доступ</a></Button>
 
           <Button variant="outline" className="w-full md:w-auto" aria-haspopup="dialog" onClick={() => openDemo()}>
             Посмотреть возможности <Play className="ml-2 h-4 w-4" />
