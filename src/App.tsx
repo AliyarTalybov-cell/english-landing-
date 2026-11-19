@@ -1,3 +1,4 @@
+import { SiteInfo } from "./components/SiteInfo";
 import { DemoVideoProvider } from "./components/DemoVideo";
 import { About } from "./components/About";
 import { Cta } from "./components/Cta";
@@ -17,6 +18,16 @@ import { Testimonials } from "./components/Testimonials";
 import "./App.css";
 
 function App() {
+  const path = window.location.pathname.replace(/\/$/, "");
+  if (path === "/about" || path === "/privacy") {
+    return (
+      <DemoVideoProvider>
+        <SiteInfo page={path === "/about" ? "about" : "privacy"} />
+        <Footer />
+      </DemoVideoProvider>
+    );
+  }
+
   return (
     <DemoVideoProvider>
       <Navbar />
