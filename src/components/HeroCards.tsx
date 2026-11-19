@@ -45,11 +45,13 @@ export const HeroCards = () => {
 
       </Card>
 
-      <Card className="absolute top-[150px] left-[50px] w-60 drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+      <Card className="absolute top-[150px] left-[50px] w-72 drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="p-4 pb-3">
-          <CardDescription>Roadmap A2 · Unit 4</CardDescription>
-          <CardTitle className="text-xl">A nice area</CardTitle>
-          <p className="text-sm text-muted-foreground">Как описать свой район и рассказать, что есть рядом с домом?</p>
+          <CardDescription>Roadmap A2</CardDescription>
+          <CardTitle className="text-xl">В паре с ИИ</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            Выполняйте парные задания с ИИ-помощником. Он берёт на себя роль собеседника и ведёт диалог по теме конкретного задания.
+          </p>
         </CardHeader>
         <CardContent className="p-4 pt-0">
           <Button asChild size="sm"><a href="#about">Открыть маршрут</a></Button>
